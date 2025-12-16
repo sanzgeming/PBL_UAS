@@ -67,6 +67,3 @@ Menu interaktif akan muncul; pilih opsi sesuai nomor.
 - Simpan data ke file JSON/CSV sehingga perubahan persist.
 - Tambah export (CSV) dan import.
 - Tambah unit test otomatis dan CI ringan (GitHub Actions).
-
-## Lisensi
-- Sesuaikan lisensi proyek (mis. MIT) bila ingin membagikan atau publikasi.
