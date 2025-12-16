@@ -22,8 +22,8 @@ PBL/
 │   └── data.py
 ├── peserta.py
 ├── skor.py
-├── input.py
-├── display.py
+├── tampilan_per_tim.py
+├── tampilan_peserta.py
 ├── edit.py
 ├── delete.py
 ├── cari_peserta.py
@@ -31,7 +31,7 @@ PBL/
 └── README.md
 ```
 
-> Catatan: beberapa nama fungsi/field diimplementasikan dengan nama bahasa Indonesia (mis. `nama`, `tim`, `r1`/`r2`/`r3`) untuk konsistensi.
+> Catatan: beberapa nama fungsi/field diimplementasikan dengan nama bahasa Indonesia (mis. `nama`, `tim`, `r1`/`r2`/`r3`, peringkat) untuk konsistensi.
 
 ## Cara menjalankan (Windows)
 1. Pastikan Python 3 terpasang.
