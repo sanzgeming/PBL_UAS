@@ -7,7 +7,7 @@ Aplikasi CLI Python untuk mengelola data peserta lomba / UKM. Menyediakan fitur 
 - Menambah peserta (validasi nama, tim A/B/C, skor 0–100)
 - Menampilkan semua peserta
 - Menampilkan peserta per tim (nested loop)
-- Mencari peserta berdasarkan nama atau tim
+- Mencari peserta berdasarkan nama atau tim (nested if)
 - Mengedit peserta (nama/tim/skor dengan validasi)
 - Menghapus peserta dengan konfirmasi
 - Penentuan peringkat:
@@ -43,7 +43,7 @@ PBL/
 Menu interaktif akan muncul; pilih opsi sesuai nomor.
 
 ## Contoh alur penggunaan
-- Pilih 3 untuk menambah peserta → isi nama (tidak boleh angka), pilih tim (A/B/C), masukkan skor ronde (0–100).
+- Pilih 3 untuk menambah peserta → isi nama , pilih tim (A/B/C), masukkan skor ronde (0–100).
 - Pilih 1 untuk menampilkan semua peserta.
 - Pilih 2 untuk tampilan berurut per tim (nested loop).
 - Pilih 4 untuk mencari berdasarkan nama atau tim.
