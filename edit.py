@@ -1,13 +1,23 @@
 from data.data import data_peserta
 from peserta import format_peserta
+
 peserta = data_peserta
+
+
+def input_int(prompt, default, min_val=0, max_val=100):
+    while True:
+        val = input(prompt).strip()
+        if not val:
+            return default
+        if val.isdigit() and min_val <= int(val) <= max_val:
+            return int(val)
+        print(f"Masukkan angka {min_val}-{max_val}.")
 
 
 def edit_peserta():
     key = input("Masukkan Nama/Index peserta yang akan diedit: ").strip()
     idx = None
 
-    # coba sebagai index
     if key.isdigit():
         i = int(key)
         if 0 <= i < len(peserta):
@@ -16,10 +26,8 @@ def edit_peserta():
             print("Index di luar jangkauan.")
             return
     else:
-        # cari berdasarkan nama (case-insensitive)
-        name_lower = key.lower()
         for i, p in enumerate(peserta):
-            if p.get("nama", "").lower() == name_lower:
+            if p["nama"].lower() == key.lower():
                 idx = i
                 break
 
@@ -28,54 +36,46 @@ def edit_peserta():
         return
 
     p = peserta[idx]
-    print("Peserta saat ini:")
+    print("\nPeserta yang akan diedit:")
+    print(f"{'Nama':<20} | {'Tim':<10} | {'R1':>3} | {'R2':>3} | {'R3':>3} | {'Tot':>3} | {'Peringkat':^14}")
+    print("-" * 78)
     print(format_peserta(p))
-    print("Biarkan kosong jika tidak ingin mengubah.")
 
-    # nama
     while True:
-        nm = input(f"Nama ({p['nama']}): ").strip()
-        if nm == "":
-            name = p["nama"]
+        new_name = input(
+            f"Nama baru (Enter untuk tetap '{p['nama']}'): "
+        ).strip()
+        if not new_name:
             break
-        if any(ch.isdigit() for ch in nm):
-            print("Nama tidak boleh mengandung angka. Silakan isi kembali.")
-            continue
-        name = nm
-        break
+        if any(ch.isdigit() for ch in new_name):
+            print("Nama tidak boleh mengandung angka.")
+        else:
+            p["nama"] = new_name
+            break
 
-    # tim
     while True:
-        tm = input(f"Tim ({p['tim']}) [A/B/C]: ").strip().upper()
-        if tm == "":
-            team = p["tim"]
+        new_team = input(
+            f"Tim (A/B/C) (Enter untuk tetap '{p['tim']}'): "
+        ).strip().upper()
+        if not new_team:
             break
-        if tm in ("A", "B", "C"):
-            team = tm
+        if new_team in ["A", "B", "C"]:
+            p["tim"] = new_team
             break
-        print(
-            "Tim tidak valid. Pilih A, B, atau C atau tekan Enter untuk tidak mengubah."
-        )
+        print("Tim tidak valid.")
 
-    # helper untuk skor
-    def read_score_field(prompt, current):
-        while True:
-            s = input(f"{prompt} ({current}): ").strip()
-            if s == "":
-                return current
-            try:
-                v = int(s)
-                if 0 <= v <= 100:
-                    return v
-                print("Nilai harus antara 0 dan 100.")
-            except ValueError:
-                print("Masukkan angka yang valid (bilangan bulat).")
+    p["r1"] = input_int(
+        f"Skor Ronde 1 (Enter untuk tetap '{p['r1']}'): ", p["r1"]
+    )
+    p["r2"] = input_int(
+        f"Skor Ronde 2 (Enter untuk tetap '{p['r2']}'): ", p["r2"]
+    )
+    p["r3"] = input_int(
+        f"Skor Ronde 3 (Enter untuk tetap '{p['r3']}'): ", p["r3"]
+    )
 
-    r1 = read_score_field("Skor ronde 1", p["r1"])
-    r2 = read_score_field("Skor ronde 2", p["r2"])
-    r3 = read_score_field("Skor ronde 3", p["r3"])
-
-    peserta[idx].update({"nama": name, "tim": team, "r1": r1, "r2": r2, "r3": r3})
-    print("Perubahan tersimpan.")
-    print("Data terbaru:")
-    print(format_peserta(peserta[idx]))
+    print("\nPeserta berhasil diperbarui.")
+    print("Data peserta setelah diedit:")
+    print(f"{'Nama':<20} | {'Tim':<10} | {'R1':>3} | {'R2':>3} | {'R3':>3} | {'Tot':>3} | {'Peringkat':^14}")
+    print("-" * 78)
+    print(format_peserta(p))

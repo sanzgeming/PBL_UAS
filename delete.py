@@ -27,6 +27,8 @@ def delete_peserta():
 
     p = peserta[idx]
     print("Peserta yang akan dihapus:")
+    print(f"{'Nama':<20} | {'Tim':<10} | {'R1':>3} | {'R2':>3} | {'R3':>3} | {'Tot':>3} | {'Peringkat':^14}")
+    print("-" * 78)
     print(format_peserta(p))
 
     confirm = (
