@@ -6,8 +6,8 @@ Aplikasi CLI Python untuk mengelola data peserta lomba / UKM. Menyediakan fitur 
 ## Anggota Pengembang
 - Insan Nur Rifqi Hidayat (050)
 - Bayu Adi Candra (001)
-- Jakfan
-- Derby
+- Jakfan Adbar Fatkhur Rokhmat (044)
+- Brilliant Derby Italianto (028)
 
 ## Fitur utama
 - Menambah peserta (validasi nama, tim A/B/C, skor 0–100)
