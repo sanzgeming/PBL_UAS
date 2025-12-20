@@ -3,6 +3,12 @@
 Ringkasan singkat:  
 Aplikasi CLI Python untuk mengelola data peserta lomba / UKM. Menyediakan fitur tambah, tampil, cari, edit, dan hapus peserta. Skor tiap peserta terdiri dari 3 ronde; total dan peringkat dihitung sesuai ketentuan.
 
+## Anggota Pengembang
+- Insan Nur Rifqi Hidayat (050)
+- Bayu Adi Candra (001)
+- Jakfan
+- Derby
+
 ## Fitur utama
 - Menambah peserta (validasi nama, tim A/B/C, skor 0–100)
 - Menampilkan semua peserta
