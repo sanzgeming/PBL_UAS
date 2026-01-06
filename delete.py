@@ -3,23 +3,20 @@ from peserta import format_peserta
 
 peserta = data_peserta
 
-
 def delete_peserta():
-    key = input("Masukkan Nama/Index peserta yang akan dihapus: ").strip()
+    name = input("Masukkan NAMA peserta yang akan dihapus: ").strip()
+
+    if not name.isalpha():
+        print("Nama hanya boleh huruf (tanpa angka atau simbol).")
+        return
+
+    name_lower = name.lower()
+
     idx = None
-    if key.isdigit():
-        i = int(key)
-        if 0 <= i < len(peserta):
+    for i, p in enumerate(peserta):
+        if p.get("nama", "").lower() == name_lower:
             idx = i
-        else:
-            print("Index di luar jangkauan.")
-            return
-    else:
-        name_lower = key.lower()
-        for i, p in enumerate(peserta):
-            if p.get("nama", "").lower() == name_lower:
-                idx = i
-                break
+            break
 
     if idx is None:
         print("Peserta tidak ditemukan.")
@@ -31,9 +28,7 @@ def delete_peserta():
     print("-" * 78)
     print(format_peserta(p))
 
-    confirm = (
-        input("Apakah Anda yakin ingin menghapus peserta ini? (y/n): ").strip().lower()
-    )
+    confirm = input("Apakah Anda yakin ingin menghapus peserta ini? (y/n): ").strip().lower()
     if confirm == "y":
         del peserta[idx]
         print("Peserta berhasil dihapus.")
